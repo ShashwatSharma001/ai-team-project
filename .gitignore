@@ -1,0 +1,16 @@
+# Python environment
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Big data files
+data/
+*.csv
+!samples/*.csv
+
+# Secrets: never commit
+*.json
+.env
+
+# Mac junk
+.DS_Store
