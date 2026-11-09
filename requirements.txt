@@ -41,6 +41,7 @@ httpx==0.28.1
 idna==3.20
 importlib_metadata==8.7.1
 importlib_resources==6.5.2
+iniconfig==2.1.0
 ipykernel==6.31.0
 ipython==8.18.1
 ipywidgets==8.1.9
@@ -84,6 +85,7 @@ parso==0.8.7
 pexpect==4.9.0
 pillow==11.3.0
 platformdirs==4.4.0
+pluggy==1.6.0
 prometheus_client==0.26.0
 prompt_toolkit==3.0.52
 proto-plus==1.27.2
@@ -97,6 +99,7 @@ pyasn1_modules==0.4.2
 pycparser==2.23
 Pygments==2.21.0
 pyparsing==3.3.3
+pytest==8.4.2
 python-dateutil==2.9.0.post0
 python-json-logger==4.0.0
 pytz==2026.6
