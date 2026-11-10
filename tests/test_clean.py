@@ -225,6 +225,25 @@ def test_add_features_days_to_company():
     assert pd.isna(with_features.loc[1, "days_to_company"])
 
 
+# ---------- the sample file in samples/ ----------
+
+def test_sample_input_file_hits_every_reject_reason():
+    # samples/sample_input_complaints.csv has one broken row per reject reason.
+    raw = pd.read_csv("samples/sample_input_complaints.csv", dtype="string")
+    good, rejects, counts = clean.clean_chunk(raw)
+
+    assert sorted(rejects["reject_reason"]) == sorted([
+        "missing complaint_id",
+        "invalid date_received",
+        "sent before received",
+        "missing company",
+        "missing product",
+    ])
+    assert counts["rows_duplicate"] == 1
+    assert counts["rows_out_of_range"] == 1
+    assert len(good) == 4
+
+
 # ---------- the whole chunk ----------
 
 def test_clean_chunk_end_to_end():

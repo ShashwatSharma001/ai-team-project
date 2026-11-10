@@ -1,0 +1,6 @@
+date_received,product,sub_product,issue,sub_issue,company_public_response,company,state,zip_code,tags,submitted_via,date_sent_to_company,company_response_to_consumer,timely_response,complaint_id,reject_reason
+2017-07-12,Mortgage,FHA mortgage,Struggling to pay mortgage,,,TD BANK US HOLDING COMPANY,PA,19103,,Web,2017-07-12,Closed with explanation,Yes,,missing complaint_id
+2017-02-30,Credit card,,Billing disputes,,,CITIBANK N.A.,TX,75001,,Web,2017-03-02,Closed with explanation,Yes,9000006,invalid date_received
+2017-05-10,Student loan,Federal student loan servicing,Dealing with my lender or servicer,,,PNC Bank N.A.,OH,43004,,Web,2017-05-01,Closed with explanation,Yes,9000007,sent before received
+2018-08-08,Checking or savings account,Checking account,Managing an account,Deposits and withdrawals,,,MA,02108,,Web,2018-08-09,Closed with explanation,Yes,9000008,missing company
+2016-11-11,,,Incorrect information on credit report,,,TD BANK US HOLDING COMPANY,CT,06103,,Web,2016-11-14,Closed with explanation,Yes,9000009,missing product
