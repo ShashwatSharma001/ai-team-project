@@ -92,6 +92,21 @@ notebooks/     # exploration only
 data/raw/      # ignored by git
 ```
 
+## Decisions made during the project
+- "Consumer disputed?" is not in our downloaded file (CFPB stopped collecting it in April 2017),
+  so the pipeline expects 15 columns, not 16.
+- Client company name (exact, as in the data): `TD BANK US HOLDING COMPANY` (4,977 complaints 2016–2018).
+- Peers (exact names): `WELLS FARGO & COMPANY`, `BANK OF AMERICA, NATIONAL ASSOCIATION`,
+  `JPMORGAN CHASE & CO.`, `CITIBANK, N.A.`, `CAPITAL ONE FINANCIAL CORPORATION`, `U.S. BANCORP`,
+  `PNC Bank N.A.`, `CITIZENS FINANCIAL GROUP, INC.` (137,926 complaints together).
+- Client questions (one SQL file each):
+  1. Which products and issues create the most complaints, and is it getting worse (vs peers)?
+  2. Which states complain most per month (TD's share per state vs peers')?
+  3. How often do companies respond late, by product?
+  4. How often does TD give relief (monetary / non-monetary) vs explanation only, compared to peers, by product?
+     (Reworded: the data has no customer ID, so "repeat problems" cannot be measured.)
+  5. (SCD2) How did complaint patterns shift when product categories were reorganised on 2017-04-24?
+
 ## Out of scope (do NOT add)
 - dbt, Airflow, Docker, Looker dashboards, ML models, LLM features.
   (An "AI on top" idea appears only as one future-step slide.)
