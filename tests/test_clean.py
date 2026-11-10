@@ -244,8 +244,14 @@ def test_clean_chunk_end_to_end():
     ]
     raw = pd.DataFrame(raw_rows, columns=RAW_COLUMNS, dtype="string")
 
-    good, rejects = clean.clean_chunk(raw)
+    good, rejects, counts = clean.clean_chunk(raw)
 
+    assert counts == {
+        "rows_read": 4,
+        "rows_out_of_range": 1,
+        "rows_rejected": 1,
+        "rows_duplicate": 1,
+    }
     assert list(good["complaint_id"]) == ["1"]
     row = good.iloc[0]
     assert row["issue"] == "Loan servicing"

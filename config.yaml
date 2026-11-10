@@ -1,0 +1,24 @@
+# Settings for the ingest job (ingest/run.py).
+# To add another source file, add one more entry under "sources".
+# No code change is needed.
+
+sources:
+  - path: data/raw/complaints.csv
+    format: csv              # csv, or json (one record per line)
+
+# How many rows to read at a time. The raw file is far too big to load at once.
+chunk_size: 250000
+
+# Only complaints received in this range are kept (both dates included).
+date_range:
+  start: "2016-01-01"
+  end: "2018-12-31"
+
+bigquery:
+  project: project-0-514205
+  dataset: staging
+  location: US
+  tables:
+    complaints: complaints   # clean rows
+    rejects: rejects         # rows that failed a rule, with the reason
+    load_log: load_log       # one row per run

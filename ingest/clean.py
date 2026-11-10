@@ -196,15 +196,25 @@ def add_features(df):
 def clean_chunk(raw_df, start=START_DATE, end=END_DATE):
     """Run every cleaning step on one chunk of the raw file.
 
-    Returns (clean rows, rejected rows).
+    Returns (clean rows, rejected rows, counts).
+    counts says where every row went, for the load log:
+    rows_read = rows_out_of_range + rows_rejected + rows_duplicate + clean rows.
     """
     df = rename_columns(raw_df)
     df = check_columns(df)
     df = clean_text(df)
-    df = filter_years(df, start, end)
-    good, rejects = split_rejects(df)
-    good = drop_duplicates(good)
-    good = fill_missing(good)
-    good = convert_types(good)
-    good = add_features(good)
-    return good, rejects
+    in_range = filter_years(df, start, end)
+    good, rejects = split_rejects(in_range)
+    deduped = drop_duplicates(good)
+
+    counts = {
+        "rows_read": len(raw_df),
+        "rows_out_of_range": len(df) - len(in_range),
+        "rows_rejected": len(rejects),
+        "rows_duplicate": len(good) - len(deduped),
+    }
+
+    deduped = fill_missing(deduped)
+    deduped = convert_types(deduped)
+    deduped = add_features(deduped)
+    return deduped, rejects, counts
